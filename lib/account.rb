@@ -1,7 +1,7 @@
 require_relative 'transaction_history'
 require_relative 'transaction'
 
-class Account #controls, knows and shows balance
+class Account
 
   attr_reader :transaction_history
 
