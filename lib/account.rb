@@ -3,6 +3,8 @@ require_relative 'transaction'
 
 class Account #controls, knows and shows balance
 
+  attr_reader :transaction_history
+
   def initialize(transaction_history = TransactionHistory.new,
                  transaction_class = Transaction)
     @balance = 0
@@ -16,7 +18,7 @@ class Account #controls, knows and shows balance
 
   def withdraw(amount)
     deduct(amount)
-    @transaction = @transaction_class.new(amount)
+    @transaction = @transaction_class.new(-amount)
     @transaction_history.save(@transaction, @balance)
   end
 
@@ -24,6 +26,10 @@ class Account #controls, knows and shows balance
     add(amount)
     @transaction = @transaction_class.new(amount)
     @transaction_history.save(@transaction, @balance)
+  end
+
+  def print_statement
+    @transaction_history.show_history
   end
 
   private
