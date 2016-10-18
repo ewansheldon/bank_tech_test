@@ -4,8 +4,11 @@ class TransactionHistory
     @transactions = []
   end
 
-  def save(transaction)
+  def save(transaction, balance)
     @transactions << transaction
+  end
+
+  def show_history
   end
 
 end

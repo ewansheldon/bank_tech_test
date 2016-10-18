@@ -1,8 +1,9 @@
 class Account #controls, knows and shows balance
 
-  def initialize(transactions = TransactionHistory.new)
+  def initialize(transaction_history = TransactionHistory.new)
     @balance = 0
-    @transactions = transactions
+    @transaction_history = transaction_history
+    # @transaction_class = transaction_class
   end
 
   def show_balance
@@ -11,6 +12,8 @@ class Account #controls, knows and shows balance
 
   def withdraw(amount)
     deduct(amount)
+    # @transaction = transaction_class.new
+    # @transaction_history.save
   end
 
   def deposit(amount)
