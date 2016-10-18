@@ -13,19 +13,17 @@ class Account #controls, knows and shows balance
   end
 
   def show_balance
-    @balance
+    "£#{@balance}"
   end
 
   def withdraw(amount)
     deduct(amount)
-    @transaction = @transaction_class.new(-amount)
-    @transaction_history.save(@transaction, @balance)
+    save_transaction(-amount)
   end
 
   def deposit(amount)
     add(amount)
-    @transaction = @transaction_class.new(amount)
-    @transaction_history.save(@transaction, @balance)
+    save_transaction(amount)
   end
 
   def print_statement
@@ -40,6 +38,11 @@ class Account #controls, knows and shows balance
 
   def add(amount)
     @balance += amount
+  end
+
+  def save_transaction(amount)
+    @transaction = @transaction_class.new(amount)
+    @transaction_history.save(@transaction, @balance)
   end
 
 end

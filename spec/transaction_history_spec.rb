@@ -9,6 +9,6 @@ describe TransactionHistory do
     expect(subject.instance_variable_get(:@transactions)).to include transaction
   end
 
-  it 'can display its history' do
+  it 'can display its history to standard output' do
   end
 end
