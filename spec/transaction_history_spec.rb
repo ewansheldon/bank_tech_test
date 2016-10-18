@@ -2,7 +2,10 @@ require 'transaction_history'
 
 describe TransactionHistory do
 
-  it 'records a history of all journeys' do
+  let(:transaction) {double(:transaction)}
 
+  it 'can save a transaction to its log' do
+    subject.save(transaction)
+    expect(subject.instance_variable_get(:@transactions)).to include transaction
   end
 end
